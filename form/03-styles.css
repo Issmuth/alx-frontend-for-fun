@@ -836,4 +836,5 @@ label {
   display: block;
   font-size: 1.4rem;
   padding: 0 0 .5rem;
+  white-space: nowrap;
 }
