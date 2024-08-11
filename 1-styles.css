@@ -1,0 +1,21 @@
+h2 a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: #A4213F;
+}
+
+h2 a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #A4213F;
+    width: 0%;
+    height: 2px;
+    transition: .5s;
+}
+
+h2 a:hover::after {
+    width: 100%;
+}

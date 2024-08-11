@@ -5,7 +5,7 @@ import os
 
 
 def headingParse(line):
-    """Parse markdown lines to appropriate HTML."""
+    """Parse heading markdown lines to appropriate HTML."""
     if line.startswith("# "):
         return("<h1>{}</h1>".format(line[2:]))
     elif line.startswith("## "):
@@ -19,8 +19,16 @@ def headingParse(line):
     elif line.startswith("###### "):
         return("<h6>{}</h6>".format(line[7:]))
     else:
-        return line
+        return
 
+def listParse(line):
+    """Parse list markdown to appropriate HTML."""
+    if line.startswith("- "):
+        return("<ul>\n<li>{}</li>\n</ul>".format(line[2:]))
+    elif line.startswith("* "):
+        return("<ul>\n<li>{}</li>\n</ul>".format(line[2:]))
+    else:
+        return
 if __name__ == "__main__":
     if len(sys.argv) < 3:
         print("Usage: ./markdown2html.py README.md README.html", file=sys.stderr)
@@ -37,3 +45,7 @@ if __name__ == "__main__":
             with open(outputFileName, 'a') as outFile:
                 for line in file:
                     outFile.write(headingParse(line.strip())+"\n")
+                    if line.startswith("- ") or line.startswith("* "):
+                        while line.startswith("- ") or line.startswith("* "):
+                            (listParse(line.strip())+"\n")
+                            line = next(file)
