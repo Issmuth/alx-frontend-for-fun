@@ -1,0 +1,13 @@
+/* Multiple variables */
+$text-color: #3D3D3D;
+$bg-color: #6d6d6d;
+
+body {
+  color: $text-color;
+  background-color: $bg-color;
+}
+
+p {
+  color: $text-color;
+  background-color: $bg-color;
+}
